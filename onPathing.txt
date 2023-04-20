@@ -1,0 +1,14 @@
+Ok I have got an idea regarding pathing that handles critters with different
+sizes and different goals etc.
+Basically we create the full djikstra maps for finding the player and whatever
+else we wanna do it for, and then to apply a given pathing map for a given
+critter of a certain size we can use a mask which is generated once for each
+area (when asked for, it can be cached). And yeah so levels will have a fixed
+size, but it will be bigger than the default terminal window size so scrolling
+will be a thing we do.
+
+No wait, that doesn't work because the pathing map changes because things move
+around. Maybe we should just A* instead. If we want a dude to path to just being
+on the same axis as the player so they can shoot them then we can just change
+the heuristic from being distance from the player to being lowest of 1 axis
+distances from the player.
